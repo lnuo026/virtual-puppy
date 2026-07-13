@@ -10,7 +10,6 @@ import { GoogleStrategy } from "./strategies/google.strategy";
 
 import type{ StringValue } from "ms";
 import { AuthController } from "./auth.controller";
-import { User } from "../user/schemas/user.schema";
 
 @Module({
      imports: [
