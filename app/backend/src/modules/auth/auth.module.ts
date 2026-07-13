@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { JwtGuard } from "src/common/guards/jwt.guard";
+import { JwtAuthGuard } from "src/common/guards/jwt.guard";
 import { PassportModule } from "@nestjs/passport";
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
@@ -25,7 +25,7 @@ import { AuthController } from "./auth.controller";
                }),
           }),
      ],
-     providers: [AuthService, JwtStrategy, GoogleStrategy, JwtGuard],
+     providers: [AuthService, JwtStrategy, GoogleStrategy, JwtAuthGuard],
      controllers: [AuthController],
 })
 
