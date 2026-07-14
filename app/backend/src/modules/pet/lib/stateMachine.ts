@@ -1,4 +1,4 @@
-import { Pet, PetStatus } from '../schema/pet.schema';
+import { Pet, PetStatus } from '../schemas/pet.schema';
 import { HAPPY_THRESHOLD, HUNGRY_THRESHOLD, SICK_ENTER_HEALTH, SICK_EXIT_HEALTH, TIRED_THRESHOLD } from './constants';
 
 

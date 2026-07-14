@@ -1,12 +1,11 @@
-
-export const BREEDS = ['shiba', 'corgi', 'poddle', 'husky', 'labrador', 'golden retriever', 'beagle', 'bulldog', 'dalmatian', 'rottweiler', 'german shepherd', 'pug', 'chihuahua', 'boxer', 'dachshund', 'siberian husky', 'border collie', 'australian shepherd', 'great dane', 'cocker spaniel']as const;
+export const BREEDS = ['shiba', 'corgi', 'poodle', 'husky', 'labrador', 'golden retriever', 'beagle', 'bulldog', 'dalmatian', 'rottweiler', 'german shepherd', 'pug', 'chihuahua', 'boxer', 'dachshund', 'siberian husky', 'border collie', 'australian shepherd', 'great dane', 'cocker spaniel']as const;
 export const COATS = ['brown', 'white', 'black', 'spotted', 'golden'] as const; 
-export const PERSONALITIES = ['friendly', 'playful', 'loyal', 'protective', 'intelligent', 'curious', 'affectionate', 'independent', 'energetic', 'gentle', 'clingy', 'playful'] as const;
+export const PERSONALITIES = ['friendly', 'loyal', 'protective', 'intelligent', 'curious', 'affectionate', 'independent', 'energetic', 'gentle', 'clingy', 'playful'] as const;
 
 export const STARTING_HEALTH = 100;
 export const STARTING_STAT = 80;
 
-export const DECAY_PET_MINUTE = {
+export const DECAY_PER_MINUTE = {
      hunger: 1,
      thirst: 1,
      mood: 0.5,
@@ -16,7 +15,7 @@ export const DECAY_PET_MINUTE = {
 
 export const HUNGRY_THRESHOLD = 30;
 export const TIRED_THRESHOLD = 25;
-export const HAPPY_THRESHOLD = 45;
+export const HAPPY_THRESHOLD = 75;
 export const SICK_ENTER_HEALTH = 20;
 export const SICK_EXIT_HEALTH = 50;
 export const HEALTH_PENALTY_PER_MINUTE = 0.15;

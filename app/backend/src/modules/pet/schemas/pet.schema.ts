@@ -30,14 +30,11 @@ export class Pet {
      @Prop({ default: STARTING_HEALTH, min: 0, max: 100 })
      health!: number;
      
-     @Prop({ default: 'idle', enum: ['idle', 'sad', 'angry', 'hunger', 'tired', 'happy', 'sick', 'sleeping'] })
+     @Prop({ default: 'idle', enum: ['idle', 'sad', 'angry', 'hungry', 'tired', 'happy', 'sick', 'sleeping'] })
      status!: PetStatus;
 
      @Prop({ default: STARTING_STAT, min: 0, max: 100 })
      hunger!: number;
-
-     @Prop({ default: STARTING_STAT, min: 0, max: 100 })
-     thirst!: number;
 
      @Prop({ default: STARTING_STAT, min: 0, max: 100 })
      mood!: number;
@@ -70,7 +67,7 @@ export class Pet {
      dailyPlayedToday!: boolean;
 
      @Prop({ default: false })
-     dailyTaskCompletedToday!: boolean;
+     dailyTaskClaimedToday!: boolean;
 }
 
 export const PetSchema = SchemaFactory.createForClass(Pet)

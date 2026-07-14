@@ -1,5 +1,5 @@
 import { BREEDS, COATS, PERSONALITIES } from "./constants";
-import { Breed, Coat, Personality } from "../schema/pet.schema";
+import { Breed, Coat, Personality } from "../schemas/pet.schema";
 
 function pickRandom<T>(items: readonly T[]): T {
      return items[Math.floor(Math.random() * items.length)];     
