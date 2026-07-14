@@ -30,6 +30,7 @@ export class Pet {
      @Prop({ default: STARTING_HEALTH, min: 0, max: 100 })
      health!: number;
      
+     @Prop({ default: 'idle', enum: ['idle', 'sad', 'angry', 'hunger', 'tired', 'happy', 'sick', 'sleeping'] })
      status!: PetStatus;
 
      @Prop({ default: STARTING_STAT, min: 0, max: 100 })
