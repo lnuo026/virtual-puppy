@@ -5,7 +5,7 @@ import { BREEDS, COATS, PERSONALITIES, STARTING_HEALTH,STARTING_STAT } from "../
 export type Breed = (typeof BREEDS)[number];
 export type Coat = (typeof COATS)[number];
 export type Personality = (typeof PERSONALITIES)[number];
-export type PetStatus = 'idle' | 'sad' | 'angry'| 'hunger'| 'tired'| 'happy'| 'sick'| 'sleeping';
+export type PetStatus = 'idle' | 'sad' | 'angry'| 'hungry'| 'tired'| 'happy'| 'sick'| 'sleeping';
 
 export type PetDocument = HydratedDocument<Pet>;
 
