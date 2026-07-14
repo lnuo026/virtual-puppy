@@ -17,7 +17,7 @@ export class PetService {
      constructor(@InjectModel(Pet.name) private readonly petModel: Model<PetDocument>){}
 
      async getOrCreatePet(userId: string,): Promise<{ pet: PetDocument;  justHatched: boolean; justCheckedIn: boolean; }> {
-          const now = Date.now();
+          const now = new Date();
           let pet =await this.petModel.findOne({
                userId: new Types.ObjectId(userId)
            }).exec();
@@ -35,8 +35,8 @@ export class PetService {
                return { pet, justHatched: true, justCheckedIn };
            }
 
-           const elapsedMs = now - pet.lastVisitAt.getTime();
-               applyDecay(pet, elapsedMs, now);
+           const elapsedMs = now.getTime() - pet.lastVisitAt.getTime();
+               applyDecay(pet, elapsedMs, now.getTime());
                const justCheckedIn = applyDailyCheckIn(pet, now);
                pet.lastVisitAt = now;
                await pet.save();

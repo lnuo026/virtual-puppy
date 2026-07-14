@@ -8,7 +8,7 @@ import { Pet, PetSchema } from "./schemas/pet.schema";
      imports: [MongooseModule.forFeature([{ name: Pet.name, schema: PetSchema }])],
      controllers: [PetController],
      providers: [PetService],
-     export: [PetService],
+     exports: [PetService],
 })
 
 export class PetModule {}
