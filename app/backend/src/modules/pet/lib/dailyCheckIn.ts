@@ -17,6 +17,7 @@ export function applyDailyCheckIn(pet: PetDocument, now: Date): boolean {
           return false;
      }
 
+     // 昨天签到过= 连续天数 +1 or 重制1
      pet.streakCount = pet.lastCheckInDate === dateString(yesterday(now)) ? 
      pet.streakCount + 1 : 1;
      pet.lastCheckInDate = today;
