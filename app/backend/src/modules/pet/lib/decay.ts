@@ -26,13 +26,11 @@ export function applyDecay(pet: PetDocument, elapsedMs: number, now: number): vo
      pet.hunger = clamp(pet.hunger - DECAY_PER_MINUTE.hunger * elapsedMinutes);
      pet.mood = clamp(pet.mood - DECAY_PER_MINUTE.mood * elapsedMinutes);
      pet.hygiene = clamp(pet.hygiene - DECAY_PER_MINUTE.hygiene * elapsedMinutes);
-     if(isSleeping){
+     if(!isSleeping) {
           pet.energy = clamp(pet.energy - DECAY_PER_MINUTE.energy * elapsedMinutes);
      }
-     pet.energy =  clamp(pet.energy - DECAY_PER_MINUTE.energy * elapsedMinutes);
-
      const inDanger = pet.hunger <= HUNGRY_THRESHOLD || pet.energy <= TIRED_THRESHOLD;
-     pet.health = clamp(pet.health + (inDanger ? -HEALTH_PENALTY_PER_MINUTE : HEALTH_RECOVERY_PER_MINUTE) * elapsedMinutes,
+     pet.health = clamp(pet.health + (inDanger ? -HEALTH_PENALTY_PER_MINUTE : HEALTH_RECOVERY_PER_MINUTE) * elapsedMinutes
  );
 
 
