@@ -2,8 +2,8 @@ import { ArrayMaxSize, IsArray, IsIn, IsString, MaxLength, ValidateNested } from
 import { Type } from "class-transformer";
 
 class ChatMessageDto {
-     @IsIn([`user`,`assistant`])
-     role!: 'user' | `assistant`;
+     @IsIn(['user','assistant'])
+     role!: 'user' | 'assistant';
 
      @IsString()
      @MaxLength(1000)
