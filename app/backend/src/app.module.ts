@@ -10,6 +10,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 
 import { PetModule } from './modules/pet/pet.module';
+import { ChatModule } from './modules/chat/chat.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { PetModule } from './modules/pet/pet.module';
     AuthModule,
     UserModule,
     PetModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [AppService],

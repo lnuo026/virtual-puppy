@@ -1,8 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ChatService } from './service';
+import { ChatService } from './chat.service';
 import { ChatRequestDto } from './dto/chat-request.dto';
 import { CurrentUser } from 'src/common/decorators/current-user.decorator';
-import { UserDocument } from '../user/schemas/user.schema';
+import type { UserDocument } from '../user/schemas/user.schema';
 
 @Controller('chat')
 export class ChatController {
