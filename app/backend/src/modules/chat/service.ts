@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PetService } from 'src/modules/pet/pet.service';
-import { buildSystemPrompt } from './buildSystemPrompt';
+import { buildSystemPrompt } from './lib/buildSystemPrompt';
 import { ChatRequestDto } from './dto/chat-request.dto';
 
 interface GeminiResponse {
@@ -24,7 +24,7 @@ export class ChatService {
      async reply(userId: string, dto: ChatRequestDto): Promise< {reply: string}>{
           const pet = await this.petService.findByUser(userId);
           const apiKey = this.config.getOrThrow<string>('GEMINI_API_KEY');
-          const model = this.config.get<string>('GEMINI_MODEL');
+          const model = this.config.get<string>('GEMINI_MODEL' )?? 'genmini-2.5-flash';
 
           const contents  =dto.messages.map((message) => ({
                role: message.role === 'assistant' ? 'model' : 'user',
@@ -39,7 +39,7 @@ export class ChatService {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
                          contents, 
-                         systemInstructions: { parts:[{text: buildSystemPrompt(pet) }] },
+                         systemInstruction: { parts:[{text: buildSystemPrompt(pet) }] },
                }),
           });
 
