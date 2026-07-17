@@ -24,7 +24,7 @@ export class ChatService {
      async reply(userId: string, dto: ChatRequestDto): Promise< {reply: string}>{
           const pet = await this.petService.findByUser(userId);
           const apiKey = this.config.getOrThrow<string>('GEMINI_API_KEY');
-          const model = this.config.get<string>('GEMINI_MODEL' )?? 'genmini-2.5-flash';
+          const model = this.config.get<string>('GEMINI_MODEL' )?? 'gemini-2.5-flash';
 
           const contents  =dto.messages.map((message) => ({
                role: message.role === 'assistant' ? 'model' : 'user',
