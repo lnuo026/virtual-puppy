@@ -44,7 +44,10 @@ export class PetService {
                return { pet, justHatched: false, justCheckedIn };
 }
           async findByUser(userId: string):Promise<PetDocument> {
-               return this.petOrThrow(userId);
+               const pet = await this.petOrThrow(userId);
+               const now = new Date();
+               this.syncPet(pet, now);
+               return pet.save();
           }
 
           private async petOrThrow(userId: string): Promise<PetDocument> {
