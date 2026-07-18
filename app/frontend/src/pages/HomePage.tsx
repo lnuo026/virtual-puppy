@@ -4,7 +4,7 @@ import { useUserStore } from "../store/userStore";
 import { getPet, feedPet, playPet, sleepPet, bathPet } from "../api/pet";
 import StatBar from "../components/StatBar";
 import { logoutUrl } from "../api/auth";
-import ChatPannel from "../components/ChatPannel";
+import ChatPanel from "../components/ChatPanel";
 
 const STATUS_LABEL: Record<string, string> = {
      idle: "Idle",
@@ -134,7 +134,7 @@ export default function HomePage() {
                          </button>
                     </div>
 
-                    <ChatPannel petName={pet.name} />
+                    <ChatPanel petName={pet.name} />
                </main>
           </div>
      );
