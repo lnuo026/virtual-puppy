@@ -13,7 +13,7 @@ export interface Pet {
      coat: Coat;
      personality: Personality;
      health: number;
-     state: PetStatus;
+     status: PetStatus;
      hunger: number;
      mood: number;
      energy: number;
