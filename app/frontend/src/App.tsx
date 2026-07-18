@@ -13,7 +13,7 @@ export default function App() {
      useEffect(() => {
           getMe()
                .then((response) => {
-                    setUser(response.data);
+                    setUser(response);
                })
                .catch((error) => {
                     console.error("Error fetching user profile:", error);

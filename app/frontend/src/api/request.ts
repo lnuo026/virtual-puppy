@@ -13,7 +13,7 @@ const request = axios.create({
 })as UnwrappedAxiosInstance;
 
 request.interceptors.response.use(
-     (response) => response.data,
+     (response) => response.data.data,
      (error) => {
           if(error.response?.status === 401 && window.location.pathname !== '/login'){ 
                window.location.href = '/login';

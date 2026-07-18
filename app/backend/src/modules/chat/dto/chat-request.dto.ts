@@ -15,5 +15,5 @@ export class ChatRequestDto {
      @ArrayMaxSize(20)
      @ValidateNested({ each: true })
      @Type(() => ChatMessageDto)
-     messages!: ChatMessageDto[];
+     message!: ChatMessageDto[];
 }

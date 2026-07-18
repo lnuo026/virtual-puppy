@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { usePetStore } from "../store/petStore";
 import { useUserStore } from "../store/userStore";
 import { getPet, feedPet, playPet, sleepPet, bathPet } from "../api/pet";
-import StatBar from "../components.tsx/StatBar";
+import StatBar from "../components/StatBar";
 import { logoutUrl } from "../api/auth";
 
 const STATUS_LABEL: Record<string, string> = {
@@ -45,7 +45,7 @@ export default function HomePage() {
      if(!pet) {
           return (
                <div className="min-h-screen flex items-cneter justify-center text-gray-400">
-                    <h1>Loading your puppy...</h1>
+                    Loading your puppy...
                </div>
           );
      }
