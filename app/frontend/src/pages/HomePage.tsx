@@ -4,6 +4,7 @@ import { useUserStore } from "../store/userStore";
 import { getPet, feedPet, playPet, sleepPet, bathPet } from "../api/pet";
 import StatBar from "../components/StatBar";
 import { logoutUrl } from "../api/auth";
+import ChatPannel from "../components/ChatPannel";
 
 const STATUS_LABEL: Record<string, string> = {
      idle: "Idle",
@@ -121,8 +122,9 @@ export default function HomePage() {
 
                          <button 
                               onClick={ () => sleepPet().then(setPet)}
-                              className="bg-white shadow-sm rounded-xl py-3 text-sm font-medium text-gray-700 hover:bg-pink-50 transition">
-                              Sleep
+                              disabled= { pet.status === 'sleeping' }
+                              className="bg-white shadow-sm rounded-xl py-3 text-sm font-medium text-gray-700 hover:bg-pink-50 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                              {pet.status === 'sleeping' ? 'Zzz...' : 'Sleep'}
                          </button>
 
                          <button 
@@ -131,6 +133,8 @@ export default function HomePage() {
                               Bath
                          </button>
                     </div>
+
+                    <ChatPannel petName={pet.name} />
                </main>
           </div>
      );

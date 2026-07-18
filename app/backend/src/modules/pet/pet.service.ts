@@ -104,11 +104,18 @@ export class PetService {
                const now = new Date();
                const pet = await this.petOrThrow(userId);
                this.syncPet(pet, now);
-               pet.sleepUntil = new Date(now.getTime() + SLEEP_DURATION_MS);
-               pet.lastInteractionAt = now;
+
+               const alreadySleeping = pet.sleepUntil != undefined && pet.sleepUntil.getTime() > now.getTime();
+
+               if(!alreadySleeping) {
+                    pet.sleepUntil = new Date(now.getTime() + SLEEP_DURATION_MS);
+                    pet.lastInteractionAt = now;                    
+               }
+
                pet.status = deriveStatus(pet, now.getTime());
                return pet.save();
           }
+          
 
           async bath(userId: string): Promise<PetDocument> {
                const now = new Date();

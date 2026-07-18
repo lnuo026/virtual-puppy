@@ -26,7 +26,7 @@ export class ChatService {
           const apiKey = this.config.getOrThrow<string>('GEMINI_API_KEY');
           const model = this.config.get<string>('GEMINI_MODEL' )?? 'gemini-2.5-flash';
 
-          const contents  =dto.messages.map((message) => ({
+          const contents  =dto.message.map((message) => ({
                role: message.role === 'assistant' ? 'model' : 'user',
                parts: [{ text: message.content }],
           }));
