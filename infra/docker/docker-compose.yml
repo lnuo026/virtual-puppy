@@ -1,0 +1,8 @@
+services:
+  backend:
+    image: ghcr.io/lnuo026/virtual-puppy-backend:latest
+    ports:
+      - "3001:3000"
+    env_file:
+      - ../../.env  
+    restart: unless-stopped
