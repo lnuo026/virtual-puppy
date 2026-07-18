@@ -1,7 +1,7 @@
 import { useState} from "react";
 import { sendMessage, type ChatMessage } from "../api/chat";
 
-export default function ChatPannel( {petName}: { petName: string} ){
+export default function ChatPanel( {petName}: { petName: string} ){
      const [messages, setMessages] = useState<ChatMessage[]>([]);
      const [input, setInput] = useState('');
      const [sending, setSending] = useState(false);

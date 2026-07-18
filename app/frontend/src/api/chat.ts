@@ -5,5 +5,5 @@ export interface ChatMessage {
      content: string;
 }
 
-export const sendMessage = (message: ChatMessage[]) =>
-     request.post< {reply: string}>('/chat' ,{message});
+export const sendMessage = (messages: ChatMessage[]) =>
+     request.post< {reply: string}>('/chat' ,{messages});
