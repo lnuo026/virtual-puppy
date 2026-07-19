@@ -41,3 +41,4 @@ coverage/
 *.md
 note.md
 .claude
+/image
