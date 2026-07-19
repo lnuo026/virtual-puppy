@@ -1,9 +1,8 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Get, Patch, Post } from "@nestjs/common";
 import { PetService } from "./pet.service";
 import { RenamePetDto } from "./dto/rename-pet.dto";
 import { CurrentUser } from "src/common/decorators/current-user.decorator";
 import type { UserDocument } from "../user/schemas/user.schema";
-import { dot } from "node:test/reporters";
 
 @Controller('pet')
 export class PetController {
