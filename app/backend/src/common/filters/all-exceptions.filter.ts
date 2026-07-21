@@ -7,7 +7,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
           const ctx = host.switchToHttp();
           const response = ctx.getResponse<Response>();
           const request = ctx.getRequest<Request>();
-
+ 
           const isHttpException = exception instanceof HttpException;
           const status = isHttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR;
 
