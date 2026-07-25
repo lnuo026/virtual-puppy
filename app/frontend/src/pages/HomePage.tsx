@@ -3,6 +3,7 @@ import { usePetStore } from "../store/petStore";
 import { useUserStore } from "../store/userStore";
 import { getPet, feedPet, playPet, sleepPet, bathPet, renamePet } from "../api/pet";
 import StatBar from "../components/StatBar";
+import PetAvatar from "../components/PetAvatar";
 import { logoutUrl } from "../api/auth";
 import ChatPanel from "../components/ChatPanel";
 
@@ -100,7 +101,8 @@ export default function HomePage() {
                     )}
 
                     <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
-                         <div className="text-center"> 
+                         <PetAvatar breed={pet.breed} />
+                         <div className="text-center">
                               {isEditingName ? (
                                    <input 
                                    value={nameDraft}
