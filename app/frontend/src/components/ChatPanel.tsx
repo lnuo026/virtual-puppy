@@ -26,9 +26,7 @@ export default function ChatPanel( {petName}: { petName: string} ){
 
           return (
                <div className="bg-white rounded-2xl shadow-sm p-4 flex flex-col gap-3">
-                    <h3 className="text-sm font-semibold text-gray-700">Chat with
-                         {petName}
-                    </h3>
+                    <h3 className="text-sm font-semibold text-gray-700">Chat with {petName}</h3>
 
                     <div className="flex flex-col gap-2 max-h-64 overflow-y-auto">
                          {messages.map( (msg, index) => (

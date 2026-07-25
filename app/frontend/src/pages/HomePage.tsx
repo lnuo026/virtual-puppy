@@ -63,6 +63,8 @@ export default function HomePage() {
           );
      }
 
+     const isSleeping = pet.sleepUntil !== undefined && new Date(pet.sleepUntil).getTime() > Date.now();
+
 
      return(
           <div className="min-h-screen bg-amber-50">
@@ -117,7 +119,7 @@ export default function HomePage() {
                               )}
 
                               <p className="text-xs text-gray-400 capitalize">
-                                   {pet.breed} breedChecked  {pet.coat}  coatChecked  {pet.personality} personalityChecked
+                                   {pet.breed} breed · {pet.coat} coat · {pet.personality} personality
                               </p>
 
                               <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 capitalize">
@@ -147,11 +149,11 @@ export default function HomePage() {
                               Play
                          </button>
 
-                         <button 
+                         <button
                               onClick={ () => sleepPet().then(setPet)}
-                              disabled= { pet.status === 'sleeping' }
+                              disabled={isSleeping}
                               className="bg-white shadow-sm rounded-xl py-3 text-sm font-medium text-gray-700 hover:bg-pink-50 transition disabled:opacity-40 disabled:cursor-not-allowed">
-                              {pet.status === 'sleeping' ? 'Zzz...' : 'Sleep'}
+                              {isSleeping ? 'Zzz...' : 'Sleep'}
                          </button>
 
                          <button 
