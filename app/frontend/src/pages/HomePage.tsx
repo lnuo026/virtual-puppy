@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePetStore } from "../store/petStore";
 import { useUserStore } from "../store/userStore";
-import { getPet, feedPet, playPet, sleepPet, bathPet } from "../api/pet";
+import { getPet, feedPet, playPet, sleepPet, bathPet, renamePet } from "../api/pet";
 import StatBar from "../components/StatBar";
 import { logoutUrl } from "../api/auth";
 import ChatPanel from "../components/ChatPanel";
@@ -28,6 +28,18 @@ export default function HomePage() {
      const setHatchSignal = usePetStore((state) => state.setHatchSignal);
 
      const [dismissedHatch, setDismissedHatch] = useState(false);
+     const [isEditingName, setIsEditingName] = useState(false);
+     const [nameDraft, setNameDraft] = useState("");
+
+
+     const handleRenameSubmit = () => {
+          setIsEditingName(false);
+          const trimmedName = nameDraft.trim();
+          if(!trimmedName || trimmedName === pet?.name) return;
+          renamePet(trimmedName).then(setPet);
+     }
+
+
 
      useEffect(() => {
           getPet()
@@ -87,12 +99,27 @@ export default function HomePage() {
 
                     <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
                          <div className="text-center"> 
-                              <h2 className="text-lg font-semibold text-gray-800">
+                              {isEditingName ? (
+                                   <input 
+                                   value={nameDraft}
+                                   onChange={(e) => setNameDraft(e.target.value)}
+                                   onBlur={handleRenameSubmit}
+                                   onKeyDown={ (e) => { if(e.key === 'Enter') handleRenameSubmit(); } }
+                                   autoFocus
+                                   className="text-lg font-semibold text-gray-800 text-center border-b border-amber-300 outline-none"
+                                   />
+                              ):(
+                              <h2 
+                                   onClick={ () => { setIsEditingName(true); setNameDraft(pet.name); } }
+                                   className="text-lg font-semibold text-gray-800 cursor-pointer">
                                    {pet.name}
                               </h2>
+                              )}
+
                               <p className="text-xs text-gray-400 capitalize">
-                                   {pet.breed} breed ✅ {pet.coat} coat ✅ {pet.personality} personality ✅
+                                   {pet.breed} breedChecked  {pet.coat}  coatChecked  {pet.personality} personalityChecked
                               </p>
+
                               <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 capitalize">
                                    {STATUS_LABEL[pet.status] ?? pet.status}
                               </span>
