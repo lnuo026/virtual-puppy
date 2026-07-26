@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { usePetStore } from "../store/petStore";
 import { useUserStore } from "../store/userStore";
 import { getPet, feedPet, playPet, sleepPet, bathPet, renamePet } from "../api/pet";
-import StatBar from "../components/StatBar";
+import StatChip from "../components/StatChip";
 import PetScene from "../components/PetScene";
 import { logoutUrl } from "../api/auth";
 import ChatPanel from "../components/ChatPanel";
@@ -101,6 +101,13 @@ export default function HomePage() {
                     )}
 
                     <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col gap-4">
+                         <div className="flex justify-between px-2">
+                              <StatChip label="Hunger" value={pet.hunger} color="bg-orange-400" />
+                              <StatChip label="Mood" value={pet.mood} color="bg-blue-400" />
+                              <StatChip label="Energy" value={pet.energy} color="bg-pink-400" />
+                              <StatChip label="Hygiene" value={pet.hygiene} color="bg-purple-400" />
+                              <StatChip label="Health" value={pet.health} color="bg-green-400" />
+                         </div>
                          <PetScene />
                          <div className="text-center">
                               {isEditingName ? (
@@ -127,14 +134,6 @@ export default function HomePage() {
                               <span className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 capitalize">
                                    {STATUS_LABEL[pet.status] ?? pet.status}
                               </span>
-                         </div>
-                         
-                         <div className="flex flex-col gap-3">
-                              <StatBar label="Hunger" value={pet.hunger} color="bg-orange-400"/>
-                              <StatBar label="Mood" value={pet.mood} color="bg-blue-400"/>
-                              <StatBar label="Energy" value={pet.energy} color="bg-pink-400"/>
-                              <StatBar label="Hygiene" value={pet.hygiene} color="bg-purple-400"/>
-                              <StatBar label="Health" value={pet.health} color="bg-green-400"/>
                          </div>
                     </div>
 
