@@ -1,1 +1,245 @@
 @import "tailwindcss";
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #2f2925;
+  background: #f7f4ee;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #f7f4ee;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 10% 0%, rgb(190 91 59 / 0.06), transparent 28rem),
+    #f7f4ee;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+::selection {
+  color: #fff;
+  background: #b9573a;
+}
+
+.pet-scene {
+  background:
+    radial-gradient(circle at 72% 18%, rgb(255 247 229 / 0.8), transparent 18rem),
+    linear-gradient(180deg, #e8dfd1 0%, #eee8dd 62%, #d9c7aa 100%);
+}
+
+.pet-scene--happy {
+  background:
+    radial-gradient(circle at 72% 18%, rgb(255 249 217 / 0.95), transparent 18rem),
+    linear-gradient(180deg, #eee6d2 0%, #dfd0b8 100%);
+}
+
+.pet-scene--hungry {
+  background:
+    radial-gradient(circle at 70% 22%, rgb(238 189 119 / 0.38), transparent 18rem),
+    linear-gradient(180deg, #e5ded0 0%, #d9c19a 100%);
+}
+
+.pet-scene--tired,
+.pet-scene--sad {
+  background:
+    radial-gradient(circle at 72% 18%, rgb(255 239 207 / 0.62), transparent 18rem),
+    linear-gradient(180deg, #e9dfd0 0%, #d7c09e 100%);
+}
+
+.pet-scene--sick {
+  background:
+    radial-gradient(circle at 72% 18%, rgb(247 214 165 / 0.55), transparent 18rem),
+    linear-gradient(180deg, #e7d9c2 0%, #d1b18a 100%);
+}
+
+.pet-scene--sleeping {
+  background:
+    radial-gradient(circle at 72% 18%, rgb(193 211 243 / 0.45), transparent 18rem),
+    linear-gradient(180deg, #9ba9c1 0%, #6e7890 100%);
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-block: 0.9rem;
+  transition: background-color 180ms ease;
+}
+
+.stat-row--attention {
+  margin-inline: -0.75rem;
+  padding-inline: 0.75rem;
+  border-radius: 0.75rem;
+  background: rgb(185 87 58 / 0.055);
+}
+
+.stat-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+.scene-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: min(25rem, 100%);
+  transform: translateY(0.5rem);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  background: rgb(47 41 37 / 0.74);
+  color: #fff;
+  font-size: 0.8125rem;
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.scene-message--visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hatch-backdrop {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgb(41 33 27 / 0.52);
+  backdrop-filter: blur(8px);
+  animation: hatch-fade-in 260ms ease-out both;
+}
+
+.hatch-card {
+  width: min(100%, 30rem);
+  border: 1px solid rgb(255 255 255 / 0.68);
+  border-radius: 1.25rem;
+  padding: 2.25rem 2rem 2rem;
+  background: #fbfaf7;
+  box-shadow: 0 24px 80px rgb(39 27 19 / 0.24);
+  text-align: center;
+  animation: hatch-rise 360ms 80ms ease-out both;
+}
+
+.hatch-mark {
+  display: grid;
+  width: 4.75rem;
+  height: 4.75rem;
+  margin: 0 auto 1.25rem;
+  place-items: center;
+  border: 1px solid rgb(185 87 58 / 0.22);
+  border-radius: 50%;
+  color: #b9573a;
+  background: #f4e6db;
+}
+
+.hatch-kicker {
+  margin: 0;
+  color: #b9573a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hatch-card h1 {
+  margin: 0.55rem 0 0;
+  color: #2f2925;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 650;
+  letter-spacing: -0.05em;
+}
+
+.hatch-copy {
+  max-width: 22rem;
+  margin: 0.8rem auto 0;
+  color: #746b64;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.hatch-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.hatch-details span {
+  border: 1px solid #e3d9ce;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: #766b63;
+  background: #fff;
+  font-size: 0.72rem;
+  text-transform: capitalize;
+}
+
+.hatch-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.7rem;
+  border: 0;
+  border-radius: 0.7rem;
+  padding: 0.8rem 1.1rem 0.8rem 1.25rem;
+  color: #fff;
+  background: #a94f35;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.hatch-button:hover {
+  background: #8f422c;
+  transform: translateY(-1px);
+}
+
+@keyframes hatch-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hatch-rise {
+  from { opacity: 0; transform: translateY(0.75rem) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

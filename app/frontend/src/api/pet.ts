@@ -1,6 +1,6 @@
 import request from "./request";
 
-export type Breed = 'shiba' | 'corgi' | 'poodle' | 'husky' | 'labrador';
+export type Breed = 'shiba' | 'corgi' | 'poodle' | 'husky' | 'labrador' | 'border collie';
 export type Coat = 'brown' | 'white' | 'black' | 'spotted' | 'golden'; 
 export type Personality = 'friendly' | 'loyal' | 'protective' | 'intelligent' | 'curious' | 'affectionate' | 'independent' | 'energetic' | 'gentle' | 'clingy' | 'playful';
 export type PetStatus = 'idle' | 'sad' | 'angry' | 'hungry' | 'tired' | 'happy' | 'sick' | 'sleeping'

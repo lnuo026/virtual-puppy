@@ -1,4 +1,4 @@
-export const BREEDS = ['shiba', 'corgi', 'poodle', 'husky', 'labrador'] as const;
+export const BREEDS = ['shiba', 'corgi', 'poodle', 'husky', 'labrador', 'border collie'] as const;
 export const COATS = ['brown', 'white', 'black', 'spotted', 'golden'] as const; 
 export const PERSONALITIES = ['friendly', 'loyal', 'protective', 'intelligent', 'curious', 'affectionate', 'independent', 'energetic', 'gentle', 'clingy', 'playful'] as const;
 
@@ -30,4 +30,3 @@ export const SLEEP_DURATION_MS = 20 * 60 * 1000; // 20 minutes in milliseconds
 
 export const DAILY_CHECKIN_BONUS =10;
 export const DAILY_TASK_BONUS = 10;
-
