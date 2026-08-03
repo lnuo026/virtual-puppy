@@ -7,9 +7,9 @@ __pycache__/
 
 
 笔记/
-*.md
 image.png
-
+PLAN.md
+note.md
 .vscode/
 
 # node
@@ -40,5 +40,6 @@ coverage/
 /pic
 *.md
 note.md
+!/README.md
 .claude
 /image
