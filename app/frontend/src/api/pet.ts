@@ -11,7 +11,7 @@ export type Breed =
 | 'village_dog'
 | 'mastiff';
 
-export type ModeId =
+export type ModelId =
 |'german_shepherd'
 | 'labrador'
 | 'village_dog'
@@ -26,7 +26,7 @@ export interface Pet {
      _id: string;
      name: string;
      breed: Breed;
-     modeId: ModeId;
+     modelId: ModelId;
      coat: Coat;
      personality: Personality;
      health: number;

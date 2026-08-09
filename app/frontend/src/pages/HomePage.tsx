@@ -308,6 +308,7 @@ export default function HomePage() {
                 </div>
               </div>
               <PetScene
+                modelId={pet.modelId}
                 effect={sceneEffect}
                 isSleeping={isSleeping}
                 message={sceneMessage}

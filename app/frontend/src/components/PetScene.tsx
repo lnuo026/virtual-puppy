@@ -2,11 +2,21 @@ import { useMemo } from "react";
 import { Canvas, type ThreeEvent } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import type { PetStatus } from "../api/pet";
+import type { PetStatus, ModelId } from "../api/pet";
 
-const MODEL_PATH = "/models/riley.glb"; // pug.glb uses a deprecated glTF material extension our loader can't read
-const TARGET_SIZE = 1.8; // Keep the dog prominent while preserving a stable camera framing.
+interface ModelConfig {
+     path:string;
+     targetSize: number;
+}
 
+const MODEL_CONFIGS: Record<ModelId, ModelConfig> = {
+     german_shepherd: { path: "/models/riley.glb", targetSize: 1.8 },
+     labrador: { path: "/labrador.glb", targetSize: 1.8 },
+     village_dog: { path: "/village_dog.glb", targetSize: 1.8 },
+     mastiff: { path: "/mastiff.glb", targetSize: 1.8 },
+}
+
+     
 export type SceneEffect = "bath" | "celebrate" | "feed" | "pet" | "play" | "sleep" | null;
 
 const SCENE_LIGHTING: Record<PetStatus, { ambient: number; color: string; floor: string; sunlight: number }> = {
@@ -26,8 +36,14 @@ const CARE_HINT: Partial<Record<PetStatus, string>> = {
      tired: "A nap would do some good.",
 };
 
-function Dog({ onPetClick }: { onPetClick: () => void }) {
-     const { scene } = useGLTF(MODEL_PATH);
+function Dog({ 
+     modelId, onPetClick 
+}: { 
+     modelId: ModelId; 
+     onPetClick: () => void 
+}) {
+     const model = MODEL_CONFIGS[modelId];
+     const { scene } = useGLTF(model.path);
 
      const scaleAndOffset = useMemo(() => {
           scene.traverse((object) => {
@@ -41,7 +57,7 @@ function Dog({ onPetClick }: { onPetClick: () => void }) {
           const size = box.getSize(new THREE.Vector3());
           const center = box.getCenter(new THREE.Vector3());
           const largestDimension = Math.max(size.x, size.y, size.z);
-          const scale = largestDimension > 0 ? TARGET_SIZE / largestDimension : 1;
+          const scale = largestDimension > 0 ? model.targetSize / largestDimension : 1;
 
           return {
                scale,
@@ -51,7 +67,7 @@ function Dog({ onPetClick }: { onPetClick: () => void }) {
                     -center.z * scale,
                ] as [number, number, number],
           };
-     }, [scene]);
+     }, [scene, model.targetSize]);
 
      return (
           <primitive
@@ -67,18 +83,21 @@ function Dog({ onPetClick }: { onPetClick: () => void }) {
 }
 
 export default function PetScene({
+     modelId,
      effect,
      isSleeping,
      message,
      onPetClick,
      status,
 }: {
+     modelId: ModelId;
      effect: SceneEffect;
      isSleeping: boolean;
      message: string;
      onPetClick: () => void;
      status: PetStatus;
 }) {
+     const model = MODEL_CONFIGS[modelId];
      const lighting = SCENE_LIGHTING[isSleeping ? "sleeping" : status];
      const careHint = CARE_HINT[isSleeping ? "sleeping" : status];
 
@@ -106,7 +125,7 @@ export default function PetScene({
                          <planeGeometry args={[18, 18]} />
                          <meshStandardMaterial color={lighting.floor} roughness={0.95} />
                     </mesh>
-                    <Dog onPetClick={onPetClick} />
+                    <Dog modelId={modelId} onPetClick={onPetClick} />
                     <ContactShadows
                          position={[0, 0.01, 0]}
                          opacity={0.28}
@@ -115,7 +134,7 @@ export default function PetScene({
                          far={2.6}
                     />
                     <OrbitControls
-                         target={[0, TARGET_SIZE / 2, 0]}
+                         target={[0, model.targetSize / 2, 0]}
                          enablePan={false}
                          minDistance={2}
                          maxDistance={4}
