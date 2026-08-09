@@ -1,13 +1,16 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, Types } from "mongoose";
-import { BREEDS, COATS, PERSONALITIES, STARTING_HEALTH,STARTING_STAT } from "../lib/constants";
+import { BREEDS, COATS, PERSONALITIES, STARTING_HEALTH,STARTING_STAT, MODES_ID } from "../lib/constants";
 
 export type Breed = (typeof BREEDS)[number];
+export type ModeId = (typeof MODES_ID)[number];
+
 export type Coat = (typeof COATS)[number];
 export type Personality = (typeof PERSONALITIES)[number];
 export type PetStatus = 'idle' | 'sad' | 'angry'| 'hungry'| 'tired'| 'happy'| 'sick'| 'sleeping';
 
 export type PetDocument = HydratedDocument<Pet>;
+
 
 @Schema({timestamps: true})
 export class Pet {
@@ -26,7 +29,11 @@ export class Pet {
      
      @Prop({ required: true, enum: BREEDS })
      breed!: Breed;
+
+     @Prop({ required: true, enum: MODES_ID, default: 'german_shepherd ' })
+     modeId!: ModeId;
      
+
      @Prop({ default: STARTING_HEALTH, min: 0, max: 100 })
      health!: number;
      
