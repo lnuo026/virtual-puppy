@@ -60,6 +60,26 @@ Gemini is called only from the backend. The API key never reaches the browser,
 and the prompt is built from server-derived pet context rather than state
 submitted by the client.
 
+## Engineering Decisions
+
+### Trust the server, not the browser
+
+The API owns pet creation, offline decay, care actions, and status derivation.
+The client renders the resulting state, which keeps pet progress consistent
+across sessions and devices.
+
+### Keep AI context and secrets off the client
+
+The backend reads the current pet record and builds Gemini context
+server-side. This prevents the browser from supplying authoritative pet state
+or receiving the Gemini API key.
+
+### Verify delivery after deployment
+
+GitHub Actions runs linting, tests, and builds before deployment. The backend
+image is published to GitHub Container Registry, deployed to EC2 through AWS
+Systems Manager, and checked through the production health endpoint.
+
 ## Tech Stack
 
 - Frontend: React, TypeScript, Vite, Tailwind CSS, Zustand, Axios
