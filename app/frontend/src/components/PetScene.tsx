@@ -11,9 +11,9 @@ interface ModelConfig {
 
 const MODEL_CONFIGS: Record<ModelId, ModelConfig> = {
      german_shepherd: { path: "/models/riley.glb", targetSize: 1.8 },
-     labrador: { path: "/labrador.glb", targetSize: 1.8 },
-     village_dog: { path: "/village_dog.glb", targetSize: 1.8 },
-     mastiff: { path: "/mastiff.glb", targetSize: 1.8 },
+     labrador: { path: "/labrador_dog.glb", targetSize: 1.8 },
+     village_dog: { path: "/patient_pup_dog.glb", targetSize: 1.8 },
+     mastiff: { path: "/guardian_dog_3d_model_free.glb", targetSize: 1.8 },
 }
 
      
