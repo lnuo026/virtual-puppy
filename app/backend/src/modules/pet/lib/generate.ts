@@ -1,5 +1,5 @@
 import { PERSONALITIES } from "./constants";
-import { Breed, Coat, Personality, ModeId } from "../schemas/pet.schema";
+import { Breed, Coat, Personality, ModelId } from "../schemas/pet.schema";
 
 
 function pickRandom<T>(items: readonly T[]): T {
@@ -9,7 +9,7 @@ const DEFAULT_NAMES = [ 'Marshmallow', 'Caramel', 'Cupcake', 'Brownie', 'Toffee'
 interface PetProfile {
      breed: Breed;
      coat: Coat;
-     modelId: ModeId;
+     modelId: ModelId;
 }
 
 const PET_PROFILES: PetProfile[] = [
@@ -42,7 +42,7 @@ export function generatePet ():{
      breed: Breed; 
      coat: Coat; 
      personality: Personality;
-     modelId: ModeId;
+     modelId: ModelId;
 } {
      const profile = pickRandom(PET_PROFILES);
 
