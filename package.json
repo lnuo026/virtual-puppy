@@ -1,0 +1,11 @@
+{
+  "name": "virtual-puppy",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,magenta \"npm run start:dev --prefix app/backend\" \"wait-on http://127.0.0.1:3000/health && npm run dev --prefix app/frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "wait-on": "^9.1.0"
+  }
+}

@@ -144,6 +144,7 @@ For local development, set `VITE_API_BASE_URL=http://localhost:3000` in
 
 ```text
 virtual-puppy/
+├── package.json                  # Root npm run dev command for both apps
 ├── app/
 │   ├── frontend/                 # React, Vite, Three.js client
 │   │   ├── src/
@@ -152,7 +153,7 @@ virtual-puppy/
 │   │   │   ├── pages/            # Login and protected home screens
 │   │   │   ├── store/            # Zustand user and pet state
 │   │   │   └── router/           # Route protection
-│   │   └── public/models/        # 3D pet assets
+│   │   └── public/               # 3D pet assets and the favicon
 │   └── backend/                  # NestJS API
 │       └── src/
 │           ├── common/           # Guards, decorators, logging, filters
@@ -161,7 +162,13 @@ virtual-puppy/
 │           └── modules/
 │               ├── auth/         # Google OAuth and JWT
 │               ├── chat/         # Gemini integration and prompt building
-│               ├── pet/          # State, decay, interactions, persistence
+│               ├── pet/
+│               │   ├── dto/      # Pet request validation
+│               │   ├── lib/      # Generation, decay, check-ins, and state logic
+│               │   │   ├── stateMachine.ts       # Derived status priority rules
+│               │   │   └── stateMachine.spec.ts  # Status-priority unit tests
+│               │   ├── schemas/  # Persisted pet model
+│               │   └── pet.service.ts
 │               └── user/         # User model and profile endpoints
 ├── infra/docker/                 # Dockerfile and production Compose config
 └── .github/workflows/            # CI and CD workflows
