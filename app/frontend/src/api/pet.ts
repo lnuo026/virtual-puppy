@@ -1,7 +1,23 @@
 import request from "./request";
 
-export type Breed = 'shiba' | 'corgi' | 'poodle' | 'husky' | 'labrador' | 'border collie';
-export type Coat = 'brown' | 'white' | 'black' | 'spotted' | 'golden'; 
+export type Breed = 
+|'shiba' 
+| 'corgi' 
+| 'poodle' 
+| 'husky' 
+| 'labrador' 
+| 'border collie'
+| 'german_shepherd'
+| 'village_dog'
+| 'mastiff';
+
+export type ModeId =
+|'german_shepherd'
+| 'labrador'
+| 'village_dog'
+| 'mastiff';
+
+export type Coat = |'brown' | 'white' | 'black' | 'spotted' | 'golden' ; 
 export type Personality = 'friendly' | 'loyal' | 'protective' | 'intelligent' | 'curious' | 'affectionate' | 'independent' | 'energetic' | 'gentle' | 'clingy' | 'playful';
 export type PetStatus = 'idle' | 'sad' | 'angry' | 'hungry' | 'tired' | 'happy' | 'sick' | 'sleeping'
 
@@ -10,6 +26,7 @@ export interface Pet {
      _id: string;
      name: string;
      breed: Breed;
+     modeId: ModeId;
      coat: Coat;
      personality: Personality;
      health: number;
