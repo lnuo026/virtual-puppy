@@ -97,7 +97,10 @@ export default function PetScene({
                <Canvas camera={{ position: [0, 1, 3.2], fov: 40 }} shadows gl={{ toneMappingExposure: 1.18 }}>
                     <ambientLight intensity={lighting.ambient} color={lighting.color} />
                     <hemisphereLight args={["#fff8e8", "#c2a77e", isSleeping ? 0.25 : 0.8]} />
+                    {/* castShadow 负责产生投影阴影的光源。 */}
                     <directionalLight position={[3, 5, 2]} intensity={lighting.sunlight} color={lighting.color} castShadow />
+                    
+                    {/* from @react-three/drei， 给场景加一层"基于图片的环境反射"（IBL，Image-Based Lighting） */}
                     <Environment preset="apartment" environmentIntensity={isSleeping ? 0.35 : 0.8} />
                     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.015, 0]} receiveShadow>
                          <planeGeometry args={[18, 18]} />
