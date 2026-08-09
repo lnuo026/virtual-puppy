@@ -1,4 +1,21 @@
-export const BREEDS = ['shiba', 'corgi', 'poodle', 'husky', 'labrador', 'border collie'] as const;
+export const BREEDS = ['shiba', 
+     'corgi', 
+     'poodle', 
+     'husky', 
+     'labrador', 
+     'border collie',
+     'german_shepherd',
+     'village_dog',
+     'mastiff',
+] as const;
+
+export const MODES_ID = [
+     'german_shepherd',
+     'labrador',
+     'village_dog',
+     'mastiff'
+] as const;
+
 export const COATS = ['brown', 'white', 'black', 'spotted', 'golden'] as const; 
 export const PERSONALITIES = ['friendly', 'loyal', 'protective', 'intelligent', 'curious', 'affectionate', 'independent', 'energetic', 'gentle', 'clingy', 'playful'] as const;
 
