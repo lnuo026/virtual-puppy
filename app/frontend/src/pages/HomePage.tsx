@@ -161,7 +161,11 @@ export default function HomePage() {
 
       const completelyCaredFor = [nextPet.hunger, nextPet.mood, nextPet.energy, nextPet.hygiene, nextPet.health]
         .every((value) => value >= 80);
+
       const celebrationKey = `virtual-puppy:care-celebration:${nextPet._id}:${new Date().toDateString()}`;
+
+      // "today's" care celebration  
+      // showSceneFeedback(action, daily care):2200
       if (completelyCaredFor && !window.sessionStorage.getItem(celebrationKey)) {
         window.sessionStorage.setItem(celebrationKey, "shown");
         window.setTimeout(() => {
