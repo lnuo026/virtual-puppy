@@ -167,3 +167,17 @@ virtual-puppy/
 └── .github/workflows/            # CI and CD workflows
 ```
 in progress
+
+## Credits
+
+The 3D dog models used in this project are licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and used unchanged.
+
+- [Riley](https://sketchfab.com/3d-models/riley-8aedf051c5714409a1171ceed6543644)
+  by [3D Resource](https://sketchfab.com/lopuh22721)
+- [Labrador Dog](https://sketchfab.com/3d-models/labrador-dog-1f56cfbab07e4fe49b5d9e521c82073a)
+  by [kenchoo](https://sketchfab.com/kenchoo)
+- [Patient Pup Dog](https://sketchfab.com/3d-models/patient-pup-dog-1c6e0eb7ae554a0ba9267b2e173fc6b5)
+  by [restore50](https://sketchfab.com/restore50)
+- [Guardian dog 3d model free](https://sketchfab.com/3d-models/guardian-dog-3d-model-free-63e0b55092a04203a0f075d034ded549)
+  by [iRahulRajput](https://sketchfab.com/rt699448)
