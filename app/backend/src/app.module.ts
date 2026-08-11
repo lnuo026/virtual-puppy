@@ -12,6 +12,9 @@ import { UserModule } from './modules/user/user.module';
 import { PetModule } from './modules/pet/pet.module';
 import { ChatModule } from './modules/chat/chat.module';
 
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,6 +28,11 @@ import { ChatModule } from './modules/chat/chat.module';
         uri: config.get<string>('MONGODB_URI'),
       }),
     }),
+    ThrottlerModule.forRoot([{
+      name: 'default',
+      ttl:60_000,
+      limit: 60,
+    }]),
     HealthModule,
     AuthModule,
     UserModule,
@@ -32,6 +40,9 @@ import { ChatModule } from './modules/chat/chat.module';
     ChatModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {provide: APP_GUARD, useClass: ThrottlerGuard},
+  ],
 })
 export class AppModule {}
