@@ -7,11 +7,15 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import cookieParser from 'cookie-parser';
 import { JwtAuthGuard } from './common/guards/jwt.guard';
+import helmet from 'helmet';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: WinstonModule.createLogger(winstonConfig),
   });
+
+  app.use(helmet());
 
   app.enableCors({
     origin: process.env.FRONTEND_URL ?? 'http://localhost:5173',
