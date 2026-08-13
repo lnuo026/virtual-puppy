@@ -1,6 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable, ForbiddenException  } from "@nestjs/common";
-import { Observable } from "rxjs";
-import type { Request } from "supertest";
+import type { Request } from "express";
 
 const SAFT_METHODS = new Set(['GET',  'HEAD', 'OPTIONS']);
 
@@ -16,7 +15,7 @@ export class OriginGuard implements CanActivate {
           const allowOrigin = process.env.FRONTEND_URL ?? 'http://localhost:5173';
           const origin = request.headers.origin;
 
-          if(origin === allowOrigin) {
+          if(origin !== allowOrigin) {
                throw new ForbiddenException('Invalid origin');
           }
 
