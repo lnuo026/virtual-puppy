@@ -8,6 +8,7 @@ import { ValidationPipe } from '@nestjs/common';
 import cookieParser from 'cookie-parser';
 import { JwtAuthGuard } from './common/guards/jwt.guard';
 import helmet from 'helmet';
+import { OriginGuard } from './common/guards/origin.guard';
 
 
 async function bootstrap() {
@@ -25,7 +26,7 @@ async function bootstrap() {
   app.use(cookieParser());
 
   const relflector = app.get(Reflector);
-  app.useGlobalGuards(new JwtAuthGuard(relflector));
+  app.useGlobalGuards(new JwtAuthGuard(relflector), new OriginGuard());
 
 
   app.useGlobalInterceptors(new ResponseInterceptor());
