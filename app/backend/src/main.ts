@@ -10,7 +10,6 @@ import { JwtAuthGuard } from './common/guards/jwt.guard';
 import helmet from 'helmet';
 import { OriginGuard } from './common/guards/origin.guard';
 
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: WinstonModule.createLogger(winstonConfig),
@@ -20,14 +19,13 @@ async function bootstrap() {
 
   app.enableCors({
     origin: process.env.FRONTEND_URL ?? 'http://localhost:5173',
-    credentials: true
+    credentials: true,
   });
 
   app.use(cookieParser());
 
   const relflector = app.get(Reflector);
   app.useGlobalGuards(new JwtAuthGuard(relflector), new OriginGuard());
-
 
   app.useGlobalInterceptors(new ResponseInterceptor());
   app.useGlobalFilters(new AllExceptionsFilter());
@@ -36,7 +34,7 @@ async function bootstrap() {
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
-    })
+    }),
   );
   await app.listen(process.env.PORT ?? 3000);
 }

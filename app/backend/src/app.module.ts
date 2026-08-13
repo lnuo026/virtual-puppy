@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose'; 
+import { MongooseModule } from '@nestjs/mongoose';
 import { validationSchema } from './config/validation';
 import { HealthModule } from './health/health.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { AuthModule } from './modules/auth/auth.module';  
+import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 
 import { PetModule } from './modules/pet/pet.module';
@@ -28,11 +28,13 @@ import { APP_GUARD } from '@nestjs/core';
         uri: config.get<string>('MONGODB_URI'),
       }),
     }),
-    ThrottlerModule.forRoot([{
-      name: 'default',
-      ttl:60_000,
-      limit: 60,
-    }]),
+    ThrottlerModule.forRoot([
+      {
+        name: 'default',
+        ttl: 60_000,
+        limit: 60,
+      },
+    ]),
     HealthModule,
     AuthModule,
     UserModule,
@@ -40,9 +42,6 @@ import { APP_GUARD } from '@nestjs/core';
     ChatModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    {provide: APP_GUARD, useClass: ThrottlerGuard},
-  ],
+  providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {}

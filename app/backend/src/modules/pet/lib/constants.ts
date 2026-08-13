@@ -1,33 +1,46 @@
-export const BREEDS = ['shiba', 
-     'corgi', 
-     'poodle', 
-     'husky', 
-     'labrador', 
-     'border collie',
-     'german_shepherd',
-     'village_dog',
-     'mastiff',
+export const BREEDS = [
+  'shiba',
+  'corgi',
+  'poodle',
+  'husky',
+  'labrador',
+  'border collie',
+  'german_shepherd',
+  'village_dog',
+  'mastiff',
 ] as const;
 
 export const MODES_ID = [
-     'german_shepherd',
-     'labrador',
-     'village_dog',
-     'mastiff'
+  'german_shepherd',
+  'labrador',
+  'village_dog',
+  'mastiff',
 ] as const;
 
-export const COATS = ['brown', 'white', 'black', 'spotted', 'golden'] as const; 
-export const PERSONALITIES = ['friendly', 'loyal', 'protective', 'intelligent', 'curious', 'affectionate', 'independent', 'energetic', 'gentle', 'clingy', 'playful'] as const;
+export const COATS = ['brown', 'white', 'black', 'spotted', 'golden'] as const;
+export const PERSONALITIES = [
+  'friendly',
+  'loyal',
+  'protective',
+  'intelligent',
+  'curious',
+  'affectionate',
+  'independent',
+  'energetic',
+  'gentle',
+  'clingy',
+  'playful',
+] as const;
 
 export const STARTING_HEALTH = 100;
 export const STARTING_STAT = 80;
 
 export const DECAY_PER_MINUTE = {
-     hunger: 1,
-     thirst: 1,
-     mood: 0.5,
-     energy: 0.3,
-     hygiene: 0.4,
+  hunger: 1,
+  thirst: 1,
+  mood: 0.5,
+  energy: 0.3,
+  hygiene: 0.4,
 };
 
 export const HUNGRY_THRESHOLD = 30;
@@ -45,5 +58,5 @@ export const PLAY_ENERGY_COST = 15;
 export const BATH_AMOUNT = 100;
 export const SLEEP_DURATION_MS = 20 * 60 * 1000; // 20 minutes in milliseconds
 
-export const DAILY_CHECKIN_BONUS =10;
+export const DAILY_CHECKIN_BONUS = 10;
 export const DAILY_TASK_BONUS = 10;

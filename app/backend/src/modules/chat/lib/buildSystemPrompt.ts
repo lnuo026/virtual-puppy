@@ -45,9 +45,8 @@ export function buildSystemPrompt(
     )
     .join('\n');
 
-
-    // careMemory array + .filter(Boolean) + .join(' ') combines the messages into a single string
-    // .filter(Boolean) 是把数组里所有"假值"(" ")过滤掉,当函数用传给 filter时，等价于对每个元素做Boolean(元素) 判断真假
+  // careMemory array + .filter(Boolean) + .join(' ') combines the messages into a single string
+  // .filter(Boolean) 是把数组里所有"假值"(" ")过滤掉,当函数用传给 filter时，等价于对每个元素做Boolean(元素) 判断真假
   const careMemory = [
     pet.dailyFedToday ? 'You were fed today.' : 'You have not been fed today.',
     pet.dailyPlayedToday ? 'You played today.' : 'You have not played today.',
@@ -59,7 +58,7 @@ export function buildSystemPrompt(
     .filter(Boolean)
     .join(' ');
 
-    // systemprompt(history) + true content
+  // systemprompt(history) + true content
   return [
     `You are ${pet.name}, a ${pet.coat} ${pet.breed} dog with a ${pet.personality} personality.`,
     `Personality tone: ${PERSONALITIES_TONE[pet.personality]}.`,

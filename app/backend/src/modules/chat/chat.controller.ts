@@ -7,11 +7,11 @@ import { Throttle } from '@nestjs/throttler';
 
 @Controller('chat')
 export class ChatController {
-     constructor(private readonly chatService: ChatService) {}
+  constructor(private readonly chatService: ChatService) {}
 
-     @Throttle({ default: { limit: 5, ttl: 60_000 } }) 
-     @Post()
-     reply(@CurrentUser()user: UserDocument, @Body() dto: ChatRequestDto) {
-          return this.chatService.reply(user._id.toString(), dto);
-     }
+  @Throttle({ default: { limit: 5, ttl: 60_000 } })
+  @Post()
+  reply(@CurrentUser() user: UserDocument, @Body() dto: ChatRequestDto) {
+    return this.chatService.reply(user._id.toString(), dto);
+  }
 }

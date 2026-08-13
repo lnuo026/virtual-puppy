@@ -1,80 +1,103 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument, Types } from "mongoose";
-import { BREEDS, COATS, PERSONALITIES, STARTING_HEALTH,STARTING_STAT, MODES_ID } from "../lib/constants";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument, Types } from 'mongoose';
+import {
+  BREEDS,
+  COATS,
+  PERSONALITIES,
+  STARTING_HEALTH,
+  STARTING_STAT,
+  MODES_ID,
+} from '../lib/constants';
 
 export type Breed = (typeof BREEDS)[number];
 export type ModelId = (typeof MODES_ID)[number];
 
 export type Coat = (typeof COATS)[number];
 export type Personality = (typeof PERSONALITIES)[number];
-export type PetStatus = 'idle' | 'sad' | 'angry'| 'hungry'| 'tired'| 'happy'| 'sick'| 'sleeping';
+export type PetStatus =
+  'idle' | 'sad' | 'angry' | 'hungry' | 'tired' | 'happy' | 'sick' | 'sleeping';
 
 export type PetDocument = HydratedDocument<Pet>;
 
-
-@Schema({timestamps: true})
+@Schema({ timestamps: true })
 export class Pet {
-     @Prop({ type: Types.ObjectId, ref: 'User', required: true, unique: true, index:true })
-     userId!: Types.ObjectId;
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'User',
+    required: true,
+    unique: true,
+    index: true,
+  })
+  userId!: Types.ObjectId;
 
-     @Prop({ required: true})
-     name!: string;
+  @Prop({ required: true })
+  name!: string;
 
-     
-     @Prop({ required: true, enum: COATS })
-     coat!: Coat;
-     
-     @Prop({ required: true, enum: PERSONALITIES })
-     personality!: Personality;
-     
-     @Prop({ required: true, enum: BREEDS })
-     breed!: Breed;
+  @Prop({ required: true, enum: COATS })
+  coat!: Coat;
 
-     @Prop({ required: true, enum: MODES_ID, default: 'german_shepherd' })
-     modelId!: ModelId;
-     
+  @Prop({ required: true, enum: PERSONALITIES })
+  personality!: Personality;
 
-     @Prop({ default: STARTING_HEALTH, min: 0, max: 100 })
-     health!: number;
-     
-     @Prop({ default: 'idle', enum: ['idle', 'sad', 'angry', 'hungry', 'tired', 'happy', 'sick', 'sleeping'] })
-     status!: PetStatus;
+  @Prop({ required: true, enum: BREEDS })
+  breed!: Breed;
 
-     @Prop({ default: STARTING_STAT, min: 0, max: 100 })
-     hunger!: number;
+  @Prop({ required: true, enum: MODES_ID, default: 'german_shepherd' })
+  modelId!: ModelId;
 
-     @Prop({ default: STARTING_STAT, min: 0, max: 100 })
-     mood!: number;
+  @Prop({ default: STARTING_HEALTH, min: 0, max: 100 })
+  health!: number;
 
-     @Prop({ default: STARTING_STAT, min: 0, max: 100 })
-     energy!: number;
+  @Prop({
+    default: 'idle',
+    enum: [
+      'idle',
+      'sad',
+      'angry',
+      'hungry',
+      'tired',
+      'happy',
+      'sick',
+      'sleeping',
+    ],
+  })
+  status!: PetStatus;
 
-     @Prop({ default: STARTING_STAT, min: 0, max: 100 })
-     hygiene!: number;
+  @Prop({ default: STARTING_STAT, min: 0, max: 100 })
+  hunger!: number;
 
-     @Prop({ default: Date.now })
-     lastInteractionAt!: Date;
+  @Prop({ default: STARTING_STAT, min: 0, max: 100 })
+  mood!: number;
 
-     @Prop({ default: Date.now })
-     lastVisitAt!: Date;
+  @Prop({ default: STARTING_STAT, min: 0, max: 100 })
+  energy!: number;
 
-     @Prop({})
-     sleepUntil?: Date;
+  @Prop({ default: STARTING_STAT, min: 0, max: 100 })
+  hygiene!: number;
 
-     @Prop({ default: 0 })
-     streakCount!: number;
+  @Prop({ default: Date.now })
+  lastInteractionAt!: Date;
 
-     @Prop({})
-     lastCheckInDate?: string;
+  @Prop({ default: Date.now })
+  lastVisitAt!: Date;
 
-     @Prop({ default: false })
-     dailyFedToday!: boolean;
+  @Prop({})
+  sleepUntil?: Date;
 
-     @Prop({ default: false })
-     dailyPlayedToday!: boolean;
+  @Prop({ default: 0 })
+  streakCount!: number;
 
-     @Prop({ default: false })
-     dailyTaskClaimedToday!: boolean;
+  @Prop({})
+  lastCheckInDate?: string;
+
+  @Prop({ default: false })
+  dailyFedToday!: boolean;
+
+  @Prop({ default: false })
+  dailyPlayedToday!: boolean;
+
+  @Prop({ default: false })
+  dailyTaskClaimedToday!: boolean;
 }
 
-export const PetSchema = SchemaFactory.createForClass(Pet)
+export const PetSchema = SchemaFactory.createForClass(Pet);
